@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>inq_form</title>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"
+        integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"
+        integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+        {% load static %}
+    <link rel="stylesheet" href="{% static 'css/Inq_form.css' %}">
+</head>
+
+<body class=" m-5" background-color="red">
+
+
+    <div class="text-center">
+        <h2>Inquiry Form </h2>
+    </div>
+
+
+    <form action="/form/" method="POST" class="mt-3"  name="form1" onsubmit="return validateForm()">
+        <!-- first line -->
+    {% csrf_token %}
+        <div class="row m-3">
+            <div class="col"><label for="cop">Country of Preference:</label> <br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="Country[]" value="USA">
+                    <label class="form-check-label" for="inlineCheckbox1">USA</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="Country[]" value="canada">
+                    <label class="form-check-label" for="inlineCheckbox2">Canada</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="Country[]" value="AUS" >
+                    <label class="form-check-label" for="inlineCheckbox3">Aus</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="Country[]" value="NZ" >
+                    <label class="form-check-label" for="inlineCheckbox3">NZ</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="Country[]" value="UK" >
+                    <label class="form-check-label" for="inlineCheckbox3">UK</label>
+                  </div>
+            </div>
+            <div class="col">Others(if any): <br> <input type="text" class="form-control-sm" value="NA"
+                    name="othercountry" id="othercountry">
+            </div>
+            <div class="col text-right"> <label for="date">Date:</label> <br> <span class="mx-2 fs-5"
+                    id="dt1"></span>
+            </div>
+        </div>
+
+        <div class="border border-dark p-3 m-4">
+
+            <div class="row mb-3">
+                <h4>Personal Information</h4>
+                 <div class="col">
+                    <label for="firstname" class="form-label">First name:</label>
+                    <input type="text" class="form-control" name="firstname" id="firstname" placeholder="First name" aria-label="First name" required>
+                </div> 
+                <div class="col">
+                    <label for="middlename" class="form-label">Middle name:</label>
+                    <input type="text" class="form-control" name="middlename" placeholder="Middle name" aria-label="Middle name" required>
+                </div>
+                <div class="col">
+                    <label for="lastname" class="form-label">Last name:</label>
+                    <input type="text" class="form-control" name="lastname" placeholder="Last name" aria-label="Last name" required>
+                </div>
+            </div>
+
+
+            <div class="row mb-3">
+                <div class="col">
+                    <label for="mobile">Mobile number:</label>
+                    <input type="tel" name="mobile" class="form-control" type="tel" placeholder="Mobile" aria-label="mobile" id="mobileno">
+                </div>
+                <div class="col">
+                    <label for="whatsapp">Whatsapp number:</label>
+                    <input type="tel" class="form-control" name="wmobile" type="tel" placeholder="Whatsapp number" aria-label="Middle name"
+                        id="wno">
+                </div>
+            </div>
+
+
+
+            <div class="row mb-3">
+                <div class="col"> <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                    <input type="text" name="email" class="form-control" id="email" placeholder="name@example.com">
+                </div>
+                <div class="col ">
+                    <label for="dob" class="form-label">Date of Birth</label><br>
+                    <input type="date" name="dob" value="2001-01-01" required id="dob">
+                </div>
+            </div>
+
+
+
+            <div class="row mb-3">
+                <div class="col">
+                    <label for="gender">Gender:</label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="inlineRadio1"
+                            value="Male" >
+                        <label class="form-check-label" for="inlineRadio1 ">Male</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="inlineRadio2"
+                            value="Female" >
+                        <label class="form-check-label" for="inlineRadio2 col">Female</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <label for="passport">Passport(Y/N):</label>
+                    <select class=" mb-3" name="isPassport"  id="passport">
+                        <option value="yes">yes</option>
+                        <option value="no">no</option>
+                    </select>
+                </div>
+            </div>
+
+
+
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Address:</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" name="address" placeholder="Enter Your Address" rows="3"></textarea>
+            </div>
+
+
+            <div class="row g-3 my-3">
+                <div class="col-sm-3">
+                    <label for="city">City:</label>
+                    <input type="text" class="form-control" name="city" placeholder="City" aria-label="City">
+                </div>
+                <div class="col-sm">
+                    <label for="state">State:</label>
+                    <input type="text" class="form-control" name="state" placeholder="State" aria-label="State">
+                </div>
+                <div class="col-sm">
+                    <label for="pincode">Pincode:</label>
+                    <input type="text" class="form-control"  name="pincode" placeholder="Pincode" aria-label="Pincode">
+                </div>
+            </div>
+
+
+            <div class="row mb-3">
+                <div class="col mb-4">
+                    <label for="instagramid">Instagram ID:</label>
+                    <input type="text" class="form-control" placeholder="InstagramID" name="instaid" aria-label="First name">
+                </div>
+                <div class="col">
+                    <label for="facebookid">Facebook Id:</label>
+                    <input type="text" class="form-control" placeholder="FacebookID" name="fbid" aria-label="Middle name">
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="border border-dark p-3 m-4">
+            <h4>Family Details</h4>
+            <div class="row mb-4">
+                <div class="col"><label for="pms">Present Marital Status:</label>
+                    <input id="pms" type="text" name="marital_status" class="form-control" aria-label="First name">
+                </div>
+                <div class="col"><label for="noc">Number of Children:</label>
+                    <input type="text" id="noc" class="form-control" name="no_child" aria-label="Middle name">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container-fluid p-3 ml-4">
+
+
+            <table class="border border-dark border-2 w-100 p-3 ml-0 mr-3 my-3">
+
+                <th colspan="6" class="text-center">Education(10th Onwards in Details)</th>
+                <tr>
+                    <td colspan="2">Duration</td>
+                    <td rowspan="2">Academic Qualification</td>
+                    <td rowspan="2">FT/PT/Correspondence</td>
+                    <td rowspan="2">Marks Obtained</td>
+                    <td rowspan="2">Name of School/College/University with city name</td>
+                </tr>
+                <tr>
+                    <td>From</td>
+                    <td>To</td>
+
+                </tr>
+                <tr>
+                    <td><input class="tablefiedls" type="date"  value="2012-01-01" required  name="fdate1" id="ifdate1" class="bothtablefields">
+                    </td>
+                    <td><input class="tablefiedls" type="date" value="2012-01-01" required  name="tdate1" id="itdate1" class="bothtablefields">
+                    </td>
+                    <td><input class="tablefiedls" name="qual1" type="text"  class="bothtablefields"></td>
+                    <td><input class="tablefiedls" name="ctype1" type="text" class="bothtablefields"></td>
+                    <td><input class="tablefiedls" name="mark1" type="text" class="bothtablefields"></td>
+                    <td><input class="tablefiedls" name="school1" type="text" class="bothtablefields"></td>
+                </tr>
+                <tr>
+                    <td><input class="tablefiedls" type="date" value="2012-01-01" required  name="fdate2" id="ifdate2" class="bothtablefields">
+                    </td>
+                    <td><input class="tablefiedls" type="date" value="2012-01-01" required  name="tdate2" id="itdate2" class="bothtablefields">
+                    </td>
+                    <td><input class="tablefiedls" name="qual2" type="text" class="bothtablefields"></td>
+                    <td><input class="tablefiedls" name="ctype2" type="text" class="bothtablefields"></td>
+                    <td><input class="tablefiedls" name="marks2" type="text" class="bothtablefields"></td>
+                    <td><input class="tablefiedls" name="school2" type="text" class="bothtablefields"></td>
+                </tr>
+                <tr>
+                    <td><input class="tablefiedls" type="date" value="2012-01-01" required  name="fdate3" id="ifdate3" class="bothtablefields">
+                    </td>
+                    <td><input class="tablefiedls" type="date" value="2012-01-01" required  name="tdate3" id="itdate3" class="bothtablefields">
+                    </td>
+                    <td><input class="tablefiedls" name="qual3" type="text" class="bothtablefields"></td>
+                    <td><input class="tablefiedls"  name="ctype3"type="text" class="bothtablefields"></td>
+                    <td><input class="tablefiedls" name="marks3" type="text" class="bothtablefields"></td>
+                    <td><input class="tablefiedls" name="school3" type="text" class="bothtablefields"></td>
+                </tr>
+                <tr>
+                    <td><input class="tablefiedls" type="date" value="2012-01-01" required  name="fdate4" id="ifdate4" class="bothtablefields">
+                    </td>
+                    <td><input class="tablefiedls" type="date" value="2012-01-01" required  name="tdate4" id="itdate4" class="bothtablefields">
+                    </td>
+                    <td><input class="tablefiedls" name="qual4" type="text" class="bothtablefields"></td>
+                    <td><input class="tablefiedls" name="ctype4" type="text" class="bothtablefields"></td>
+                    <td><input class="tablefiedls" name="marks4" type="text" class="bothtablefields"></td>
+                    <td><input class="tablefiedls" name="school4" type="text" class="bothtablefields"></td>
+                </tr>
+            </table>
+
+            <table class="border border-dark border-2 w-100 p-3 ml-0 mr-3 mt-5">
+
+                <th colspan="4" class="text-center">Work History</th>
+                <tr>
+                    <td colspan="2">Duration</td>
+                    <td rowspan="2">Name of Company</td>
+                    <td rowspan="2">Designation and Job Profile</td>
+                </tr>
+                <tr>
+                    <td>From</td>
+
+
+                    <td>
+                        To
+
+                    </td>
+
+                </tr>
+                <tr>
+                    <td><input class="tablefiedls" type="date" value="2012-01-01" required  name="fdate5" id="ifdate5" class="bothtablefields">
+                    </td>
+                    <td><input class="tablefiedls" type="date" value="2012-01-01" required  name="tdate5" id="itdate5" class="bothtablefields">
+                    </td>
+                    <td><input class="tablefiedls" name="org1" type="text" class="bothtablefields"></td>
+                    <td><input class="tablefiedls" name="role1" type="text" class="bothtablefields"></td>
+
+                </tr>
+                <tr>
+                    <td><input class="tablefiedls" type="date" value="2012-01-01" required  name="fdate6" id="ifdate6" class="bothtablefields">
+                    </td>
+                    <td><input class="tablefiedls" type="date" value="2012-01-01" required  name="tdate6" id="itdate6" class="bothtablefields">
+                    </td>
+
+                    <td><input class="tablefiedls" name="org2" type="text" class="bothtablefields"></td>
+                    <td><input class="tablefiedls" name="role2" type="text" class="bothtablefields"></td>
+                </tr>
+            </table>
+        </div>
+
+
+
+
+
+        <div class="border border-dark p-4 m-4">
+            <h4>Family Information</h4>
+            <div class=" col">
+                <div class="mb-2 row">
+                    <label for="">Father/Husband's Name:</label>
+                    <input type="text" class="form-control " name="fname" placeholder="Father/Husband's Name" aria-label="FH name">
+                </div>
+                <div class="row mb-2">
+                    <label for="">Occupation: Service/Bussiness/Others(Specify):</label>
+                    <input class="form-control" type="text" mb-2 name="occupation_type"
+                        placeholder="Occupation: Service/Bussiness/Others(Specify)">
+                </div>
+                <div class="row mb-2">
+                    <label for="">Name of Bussiness or Organisation:</label>
+                    <input class="form-control" type="text" name="occupation_name" placeholder="Name of Bussiness or Organisation">
+                </div>
+            </div>
+        </div>
+
+
+        
+
+        <div class="container-fluid w-90 border border-dark p-4 m-4 " style="width: 92vw;">
+            <h4>Ability in Language - English: </h4>
+            <select class="form-select" name="english_test" aria-label="Default select example" id="examselect">
+                <option selected disabled>Select Your Exam</option>
+                <option value="IELTS"> IELTS-GENERAL / ACADEMIC </option>
+                <option value="TOEFL">TOEFL</option>
+                <option value="PTE">PTE</option>
+            </select>
+
+            <br>
+            <div class=" my-3">
+                <label class=" form-label" for="dot">Date of Test:</label>
+                <input class="mx-1 form-control-sm" name="english_test_date" type="date"  value="2012-01-01" required >
+                
+                <label class="mx-3" for="bands">Bands:</label>
+
+                <label class="mx-1 form-label" for="l">L </label>
+                <input  type="number" name="lband" value="0" min="0" max="9">
+
+                <label class="mx-2 form-label" for="r">R</label>
+                <input  type="number" min="0" name="rband" value="0" max="9">
+                
+                <label class="mx-2" for="w">W</label>
+                <input  type="number" min="0" name="wband"  value="0" max="9">
+                
+                <label class="mx-2" for="s">S</label> 
+                <input  type="number" min="0" name="sband" value="0" max="9">
+
+                <label class="mx-2 form-label" for="overall">Overall Score</label>
+                <input  type="number" min="0" name="oband" value="0" max="9">
+            
+
+            <br>
+            <br>
+
+            <h4 >Competitve Exam-GRE/GMAT/SAT</h4>
+            
+
+            <label for="cedot" class="m-2">Date of Test:</label>
+            <input class="col" type="date" name="general_test_date" value="2012-01-01" required  id="cedot">
+            <label for="ces" class="col">Score</label>
+            <input class="col" type="number" name="gs" id="ces" value='0' min="0" max="9">
+
+            </div>
+            </div>
+        </div>
+
+
+        <div class="container-fluid w-90 border border-dark p-4 m-4 " style="width: 92vw;">
+            <label for="rejected">Have you ever been rejected? </label>
+            <select class="form-select form-select-sm mb-2 w-50" name="rejected" id="">
+                <option value="yes">Yes</option>
+                <option value="no" selected>No</option>
+            </select><br>
+            <label for="rejectedcountry">If yes, Which Country/Countries(HOW MANY TIMES): &nbsp &nbsp</label>
+            <input class="mb-2" type="text" name="rejectedcountry" ><br>
+            <label for="refrence" name="ref" style="width">Refrence(Newspaper, Hoardings/Posters, Friends/Relatives): &nbsp &nbsp</label>
+            <input type="text">
+        </div>
+       
+
+        <div class="text-center">
+
+            <button type="submit" class="btn btn-primary" value="submit">Submit</button>
+        </div>
+        
+    
+    </form>
+
+
+    {% load static %}
+    <script src="{% static 'js/validateForm.js' %}" type="text/javascript"></script>
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

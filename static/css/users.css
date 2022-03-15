@@ -1,0 +1,11 @@
+.intro{
+    display: block;
+    height: 50vh;
+    width: 60vw;
+    margin: auto;
+    background-color: rgb(241, 243, 246);
+    margin-top: 2rem;
+    padding:2rem;
+    border-radius: 1rem;
+    /* border:2px solid black; */
+}

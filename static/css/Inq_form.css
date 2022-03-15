@@ -1,0 +1,48 @@
+body{
+    background-color: rgb(246, 238, 203);
+}
+.tablefiedls{
+    border: none;
+    width: 100%;
+    
+}
+
+.tablefiedls:hover{
+    background-color:rgb(198, 240, 214);
+}
+.bothtablefields{
+    border-spacing: 0px;
+    margin: 0;
+    padding: 0;
+    /* width: -webkit-fill-available; */
+}
+.allborder{
+    border: 2px solid black;
+}
+td{
+    border: 1px solid black;
+    text-align: center;
+    border-collapse: collapse;
+    
+}
+td:hover{ background-color: rgb(246, 240, 188);
+
+}
+#form.valid .indicator{
+    background: rgb(247, 246, 214);
+    box-shadow: 0 0 5px #0f0,
+                0 0 10px #0f0,
+                0 0 20px #0f0,
+                0 0 40px #0f0,
+
+}
+input:focus{
+    outline: none;
+    box-shadow: 0px 0px 5px #40b2f0;
+    border-color: #5AB0DB;
+}
+
+
+input {
+    border: 2px solid black;
+}
